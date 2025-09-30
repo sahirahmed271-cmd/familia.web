@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Family Hub ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>👨‍👩‍👧‍👦 Welcome to Our Family Hub ❤️</h1>
+
+  <!-- Family Notes -->
+  <div class="box">
+    <h2>📝 Family Notes</h2>
+    <textarea id="note" placeholder="Write something..."></textarea><br>
+    <button onclick="addNote()">Post</button>
+    <ul id="notes"></ul>
+  </div>
+
+  <!-- Photo Sharing -->
+  <div class="box">
+    <h2>📸 Photo Sharing</h2>
+    <input type="file" accept="image/*" id="photoUpload">
+    <div id="gallery"></div>
+  </div>
+
+  <!-- Mini Game -->
+  <div class="box">
+    <h2>🎮 Mini Game</h2>
+    <a href="game.html">Play Tic-Tac-Toe</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

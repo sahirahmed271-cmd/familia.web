@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Tic-Tac-Toe 🎮</h1>
+  <div id="board" class="board"></div>
+  <button onclick="restart()">Restart</button>
+  <p id="status"></p>
+
+  <script>
+    let current = "X";
+    let board = Array(9).fill(null);
+
+    function render() {
+      let html = "";
+      board.forEach((val, i) => {
+        html += `<div class="cell" onclick="move(${i})">${val || ""}</div>`;
+      });
+      document.getElementById("board").innerHTML = html;
+    }
+
+    function move(i) {
+      if (!board[i]) {
+        board[i] = current;
+        current = current === "X" ? "O" : "X";
+        render();
+        checkWin();
+      }
+    }
+
+    function checkWin() {
+      const wins = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+      ];
+      for (let combo of wins) {
+        let [a,b,c] = combo;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          document.getElementById("status").innerText = board[a] + " Wins!";
+          return;
+        }
+      }
+      if (!board.includes(null)) {
+        document.getElementById("status").innerText = "Draw!";
+      }
+    }
+
+    function restart() {
+      board = Array(9).fill(null);
+      current = "X";
+      document.getElementById("status").innerText = "";
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
